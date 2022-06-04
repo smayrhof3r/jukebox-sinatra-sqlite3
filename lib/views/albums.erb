@@ -1,0 +1,9 @@
+<div class="artist-box">
+  <h2><%= !@albums.empty? ? @albums.first["artist"] : "No Albums"%></h2>
+  <h3>Albums</h3>
+  <div class="content-box">
+    <% @albums.each do |album| %>
+    <a href = "/albums/<%=album["id"]%>"><%="#{album["title"]}"%></a><br>
+    <% end %>
+  </div>
+</div>

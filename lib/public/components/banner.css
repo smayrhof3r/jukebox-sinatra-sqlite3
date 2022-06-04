@@ -1,0 +1,9 @@
+.banner {
+  width: 100vw;
+}
+
+.banner h1 {
+  text-align: center;
+  color: white;
+  font-size: 7vw;
+}

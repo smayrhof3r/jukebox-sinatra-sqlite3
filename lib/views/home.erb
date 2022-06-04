@@ -1,0 +1,8 @@
+<div class="artist-box">
+  <h2>Artists</h2>
+  <div class="content-box">
+  <% @artists.each do |id, artist| %>
+  <a href = "/artists/<%=id%>"><%="#{artist}"%></a><br>
+  <% end %>
+  </div>
+</div>

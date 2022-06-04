@@ -1,0 +1,42 @@
+.body-box {
+  height: 100 vh;
+  margin: 0;
+  padding: 0;
+}
+
+.banner-box {
+  height: 25vh;
+  margin:0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.main-box {
+  margin:0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.artist-box {
+  height: 65vh;
+}
+
+.content-box {
+  max-height: 60vh;
+  margin: 0;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-color: black;
+  width: 60vw;
+  color: white;
+  text-align: center;
+}
+
+.footer-box {
+  height: 10vh;
+  margin:0;
+}

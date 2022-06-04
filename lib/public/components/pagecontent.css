@@ -1,0 +1,45 @@
+.artist-box h2 {
+  border-bottom: 1px solid #DB521D;
+  font-size: 3vw;
+  color: #DB521D;
+  width: 60vw;
+  padding: 0;
+  margin: 1vw 0 0 0;
+  background-color: black;
+  box-shadow: 2px 2px 10px #DB521D;
+}
+
+.artist-box h3 {
+  border: 1px solid #e87548;
+  font-size: 2.8vw;
+  color: #e87548;
+  width: 60vw;
+  padding: 0;
+  margin: 1vw 0 0 0;
+  background-color: black;
+  box-shadow: 2px 2px 10px #e87548;
+}
+
+.artist-box h4 {
+  border-bottom: 1px solid #e8c848;
+  font-size: 2.8vw;
+  color: #e8c848;
+  width: 60vw;
+  padding: 0;
+  margin: 1vw 0 0 0;
+}
+.content-box {
+  font-size: 2vw;
+}
+
+.track-box {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 2vw;
+  padding: 0;
+  margin: 0;
+  border: 1px solid yellow;
+  box-shadow: 2px 2px 10px orange;
+  margin-top: 1vw;
+}

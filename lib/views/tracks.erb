@@ -1,0 +1,10 @@
+<div class = "artist-box">
+  <h2>Artist: <%=!@tracks.empty? ? @tracks.first["artist"] : "No tracks to show"%></h2>
+  <h3>Album: <%=!@tracks.empty? ? @tracks.first["album"] : ""%></h3>
+  <h4>Tracks</h4>
+  <div class = "content-box">
+    <% @tracks.each do |track| %>
+    <a href = "/tracks/<%=track["id"]%>"><%="#{track["name"]}"%></a><br>
+    <% end %>
+  </div>
+</div>

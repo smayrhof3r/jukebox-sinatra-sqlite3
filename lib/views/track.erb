@@ -1,0 +1,11 @@
+<div class = "artist-box">
+  <h2>Artist: <%=!@track.empty? ? @track["artist"] : "No Data"%></h2>
+  <h3>Album: <%=!@track.empty? ? @track["album"] : ""%></h3>
+  <div class = "track-box">
+    <% unless @track.empty? %>
+      <h4>Track: <%=@track["name"]%></h5>
+      <p>Price: <%="£ #{@track["price"]}" %> </p>
+      <p>Duration: <%= "#{(@track["duration"]/60000).round(2)} min" %></p>
+    <% end %>
+  </div>
+</div>
