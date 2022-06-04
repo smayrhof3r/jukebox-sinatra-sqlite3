@@ -8,4 +8,14 @@
       <p>Duration: <%= "#{(@track["duration"]/60000).round(2)} min" %></p>
     <% end %>
   </div>
+  <% if @video %>
+    <div class = "video-box">
+      <iframe
+      src=<%= @video.embed_url %>
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    </div>
+  <% end %>
 </div>

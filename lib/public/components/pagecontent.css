@@ -43,3 +43,15 @@
   box-shadow: 2px 2px 10px orange;
   margin-top: 1vw;
 }
+
+.video-box {
+  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1vh 0 0 0;
+    background-color: black;
+    border: 1px solid red;
+    box-shadow: 2px 2px 10px red;
+    width: 60vw;
+    height: 30vh;
+}

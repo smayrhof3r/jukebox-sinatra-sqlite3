@@ -4,6 +4,7 @@ require "pry-byebug"
 # require "better_errors"
 require "sqlite3"
 require_relative "./models/repo"
+require_relative "./models/youtube"
 
 configure :development do
   # use BetterErrors::Middleware
@@ -30,6 +31,7 @@ end
 
 get "/tracks/:id" do
   @track = repo.track_by_track_(params[:id].to_i)
+  @video = Youtube.new("#{@track["artist"]} #{@track["name"]}")
   # binding.pry
   erb :track # Will render views/home.erb file (embedded in layout.erb)
 end

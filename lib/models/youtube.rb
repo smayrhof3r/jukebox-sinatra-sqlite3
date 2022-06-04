@@ -1,7 +1,7 @@
 require "open-uri"
 require "json"
 
-API_KEY = "&key=AIzaSyAzvN9a9K8VBUVbKtiCTbfzwi8XEito1Ag"
+API_KEY = "&key=AIzaSyCvx6X1mnvRfh9zMCuVplVyeAAwp5e_Ygg"
 BASE_URL = 'https://youtube.googleapis.com/youtube/v3/search?maxResults=1&type=video&'
 class Youtube
   attr_reader :watch_url, :embed_url
@@ -11,11 +11,7 @@ class Youtube
     @res = ""
     @watch_url = ""
     @embed_url = ""
-  end
-
-  def fetch
-    get_json
-    youtube_link
+    fetch
   end
 
   private
@@ -32,5 +28,10 @@ class Youtube
     embed = "https://www.youtube.com/embed/"
     @watch_url = "#{watch}#{video_id}"
     @embed_url = "#{embed}#{video_id}"
+  end
+
+  def fetch
+    get_json
+    youtube_link
   end
 end
