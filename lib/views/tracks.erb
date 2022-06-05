@@ -1,6 +1,6 @@
 <div class = "artist-box">
-  <h2>Artist: <%=!@tracks.empty? ? @tracks.first["artist"] : "No tracks to show"%></h2>
-  <h3>Album: <%=!@tracks.empty? ? @tracks.first["album"] : ""%></h3>
+  <a href = "/"><h2>Artist: <%=!@tracks.empty? ? @tracks.first["artist"] : "No tracks to show"%></h2></a>
+  <a href = "/artists/<%= @tracks.first["artist_id"] %>"><h3>Album: <%=!@tracks.empty? ? @tracks.first["album"] : ""%></h3></a>
   <h4>Tracks</h4>
   <div class = "content-box">
     <% @tracks.each do |track| %>
