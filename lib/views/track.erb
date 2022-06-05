@@ -1,3 +1,4 @@
+<% require_relative '../models/youtube' %>
 <div class = "artist-box">
   <h2>Artist: <%=!@track.empty? ? @track["artist"] : "No Data"%></h2>
   <h3>Album: <%=!@track.empty? ? @track["album"] : ""%></h3>
@@ -8,14 +9,22 @@
       <p>Duration: <%= "#{(@track["duration"]/60000).round(2)} min" %></p>
     <% end %>
   </div>
-  <% if @video %>
+  <% if @track["videos"] %>
     <div class = "video-box">
-      <iframe
-      src=<%= @video.embed_url %>
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
-    </div>
-  <% end %>
-</div>
+      <div class="thumbnails">
+        <% @track["videos"].each do |video_id| %>
+          <a href = '\video\<%= video_id %>'><img src = <%= Youtube.thumbnail(video_id)%>></a>
+        <% end %>
+      </div>
+    <% if @video %>
+      <div class = "video">
+        <iframe
+        src=<%= @video %>
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+      </div>
+    <% end %>
+  </div>
+<% end %>

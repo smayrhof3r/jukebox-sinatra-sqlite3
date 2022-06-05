@@ -2,36 +2,34 @@ require "open-uri"
 require "json"
 
 API_KEY = "&key=AIzaSyCvx6X1mnvRfh9zMCuVplVyeAAwp5e_Ygg"
-BASE_URL = 'https://youtube.googleapis.com/youtube/v3/search?maxResults=1&type=video&'
+BASE_URL = 'https://youtube.googleapis.com/youtube/v3/search?maxResults=5&type=video&'
 class Youtube
-  attr_reader :watch_url, :embed_url
+  attr_reader :video_ids # :watch_url
+
   def initialize(search_term)
     @url = "#{BASE_URL}"
     @search_term = search_term
-    @res = ""
-    @watch_url = ""
-    @embed_url = ""
-    fetch
+    @json = json
+    @video_ids = video_ids_from_json
   end
 
   private
 
-  def get_json
+  def json
     url = "#{@url}q=#{@search_term}#{API_KEY}"
-    @res = URI.parse(url).open.string
-    @res = JSON.parse(@res)
+    json_parse = URI.parse(url).open.string
+    JSON.parse(json_parse)
   end
 
-  def youtube_link
-    video_id = @res["items"].first["id"]["videoId"]
-    watch = "https://www.youtube.com/watch?v="
-    embed = "https://www.youtube.com/embed/"
-    @watch_url = "#{watch}#{video_id}"
-    @embed_url = "#{embed}#{video_id}"
+  def video_ids_from_json
+    @json["items"].map { |item| item["id"]["videoId"] }
   end
 
-  def fetch
-    get_json
-    youtube_link
+  def self.thumbnail(video_id)
+    "https://img.youtube.com/vi/#{video_id}/0.jpg"
+  end
+
+  def self.embed_link(video_id)
+    "https://www.youtube.com/embed/#{video_id}"
   end
 end

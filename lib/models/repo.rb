@@ -50,6 +50,32 @@ class Repo
       where t.id = #{id}
     SQL
 
-    %w[id name artist album duration price].zip(@db.execute(query).flatten).to_h
+    track = %w[id name artist album duration price].zip(@db.execute(query).flatten).to_h
+
+    videos = @db.execute("select video_id from videos v where v.track_id = #{id}").flatten
+    track["videos"] = videos if videos
+    track
+  end
+
+  def track_by_video_(id)
+
+    query = <<~SQL
+      select t.id, t.name, p.name as artist, a.title as album, t.milliseconds, t.unit_price from tracks t
+      join albums a on a.id = t.album_id
+      join artists p on p.id = a.artist_id
+      join videos v on v.track_id = t.id
+      where v.video_id = "#{id}"
+      limit 1
+    SQL
+
+    track = %w[id name artist album duration price].zip(@db.execute(query).flatten).to_h
+    videos = @db.execute("select video_id from videos v where v.track_id = #{track["id"]}").flatten
+    track["videos"] = videos if videos
+    track
+  end
+
+  def add_videos(track_id, videos)
+    insert_string = videos.video_ids.map { |video_id| "(#{track_id}, '#{video_id}')" }.join(",")
+    @db.execute("INSERT INTO videos (track_id, video_id) values #{insert_string};")
   end
 end

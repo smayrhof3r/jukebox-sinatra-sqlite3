@@ -44,14 +44,39 @@
   margin-top: 1vw;
 }
 
+.track-box p {
+  margin: .5vw;
+  padding: 0;
+}
+
 .video-box {
   display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     margin: 1vh 0 0 0;
     background-color: black;
     border: 1px solid red;
     box-shadow: 2px 2px 10px red;
     width: 60vw;
+}
+
+.video {
+  display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1vh 0 0 0;
+    width: 60vw;
     height: 30vh;
+}
+
+.thumbnails {
+  width: 60vw;
+  height: 8vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.thumbnails img {
+  height: 8vw;
 }

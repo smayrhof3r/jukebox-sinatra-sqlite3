@@ -31,8 +31,17 @@ end
 
 get "/tracks/:id" do
   @track = repo.track_by_track_(params[:id].to_i)
-  @video = Youtube.new("#{@track["artist"]} #{@track["name"]}")
-  # binding.pry
+  unless @track["videos"]
+    videos = Youtube.new("#{@track["artist"]} #{@track["name"]}")
+    repo.add_videos(params[:id].to_i, videos)
+    @track = repo.track_by_track_(params[:id].to_i)
+  end
+  erb :track # Will render views/home.erb file (embedded in layout.erb)
+end
+
+get "/video/:video_id" do
+  @video = Youtube.embed_link(params[:video_id])
+  @track = repo.track_by_video_(params[:video_id])
   erb :track # Will render views/home.erb file (embedded in layout.erb)
 end
 # Then:
