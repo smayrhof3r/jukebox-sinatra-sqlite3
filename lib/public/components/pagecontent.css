@@ -62,11 +62,25 @@
 
 .video {
   display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 1vh 0 0 0;
-    width: 60vw;
-    height: 30vh;
+  flex-direction: column;
+  margin: 1vh 0 0 0;
+  width: 60vw;
+  height: 30vh;
+  align-items: center;
+  color: navajowhite;
+}
+.video iframe {
+  flex: 1 0 auto;
+}
+
+.video p {
+  flex: 0 0 2vw;
+  margin: 0;
+  padding: 0;
+}
+.video a {
+  color: navajowhite;
+  text-decoration: underline;
 }
 
 .thumbnails {
@@ -79,4 +93,17 @@
 
 .thumbnails img {
   height: 8vw;
+}
+
+.keyword-form {
+  margin: auto;
+}
+
+.keyword-form form {
+  margin: 1vw;
+  color: navajowhite;
+}
+
+.keyword-form button {
+  background-color: orangered;
 }

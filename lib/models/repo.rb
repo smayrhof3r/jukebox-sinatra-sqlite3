@@ -74,6 +74,11 @@ class Repo
     track
   end
 
+  def replace_videos(track_id, videos)
+    @db.execute("DELETE FROM videos WHERE track_id = ?", track_id)
+    add_videos(track_id, videos)
+  end
+
   def add_videos(track_id, videos)
     insert_string = videos.video_ids.map { |video_id| "(#{track_id}, '#{video_id}')" }.join(",")
     @db.execute("INSERT INTO videos (track_id, video_id) values #{insert_string};")

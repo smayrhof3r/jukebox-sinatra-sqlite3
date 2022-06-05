@@ -9,22 +9,35 @@
       <p>Duration: <%= "#{(@track["duration"]/60000).round(2)} min" %></p>
     <% end %>
   </div>
-  <% if @track["videos"] %>
+  <% if @track["videos"] || @new_search %>
     <div class = "video-box">
-      <div class="thumbnails">
-        <% @track["videos"].each do |video_id| %>
-          <a href = '\video\<%= video_id %>'><img src = <%= Youtube.thumbnail(video_id)%>></a>
-        <% end %>
-      </div>
-    <% if @video %>
-      <div class = "video">
-        <iframe
-        src=<%= @video %>
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+      <% if @track["videos"] %>
+        <div class="thumbnails">
+          <% @track["videos"].each do |video_id| %>
+            <a href = '\video\<%= video_id %>'><img src = <%= Youtube.thumbnail(video_id)%>></a>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @video && !@new_search %>
+        <div class = "video">
+          <p>Search results not accurate? <a href = "/tracks/update/<%=@track["id"]%>">Help us fix it!</a></p>
+          <iframe
+          src=<%= @video %>
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        </div>
+      <% end %>
+      <% if @new_search %>
+        <div class="keyword-form">
+          <form action="/tracks/update/<%=@track["id"]%>" method = "post">
+            <label for="keywords">Keywords for new youtube search:</label>
+            <input type="text" id="keywords" name="keywords">
+            <input type="submit" value="Refresh">
+          </form>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
