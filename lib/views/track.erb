@@ -1,7 +1,7 @@
 <% require_relative '../models/youtube' %>
 <div class = "artist-box">
   <a href = "/"><h2>Artist: <%=!@track.empty? ? @track["artist"] : "No Data"%></h2></a>
-  <a href = "/albums/<%= @tracks.first["album_id"] %>"><h3>Album: <%=!@track.empty? ? @track["album"] : ""%></h3></a>
+  <a href = <%= @track.empty? ? "/" : "/albums/#{@track["album_id"]}"%>><h3>Album: <%=!@track.empty? ? @track["album"] : ""%></h3></a>
   <div class = "track-box">
     <% unless @track.empty? %>
       <h4>Track: <%=@track["name"]%></h5>
