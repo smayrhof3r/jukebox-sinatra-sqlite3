@@ -7,8 +7,6 @@ albums to tracks.
 Originally developed for a le wagon 'optional' challenge, but extended to add additional features
 and practice my HTML / CSS front end.
 
-Aaron has kindly built a video API so now it's complete!
-
 ### running this app
 fork or clone the repo into your personal computer
 run using command 'ruby app.rb'
